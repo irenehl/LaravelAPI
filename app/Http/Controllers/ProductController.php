@@ -25,7 +25,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return ProductModel::create($request->all());
+        $v = Validator::make($request->all(), [
+            'sku' => 'required',
+            'name' => 'required',
+            'stock' => 'required',
+            'price' => 'required'
+        ]);
+
+        if($v->fails())
+            return $v->errors();
+        else
+            return ProductModel::create($request->all());
     }
 
     /**
@@ -36,7 +46,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return ProductModel::find($id);
     }
 
     /**
@@ -48,7 +58,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = ProductModel::find($id);
+        $product->update($request->all());
+        return $product;
     }
 
     /**
@@ -59,6 +71,18 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = ProductModel::destroy($id);
+        return $product;
+    }
+
+    /**
+     * Searchs the specified resource from storage.
+     *
+     * @param  string  $name
+     * @return \Illuminate\Http\Response
+     */
+    public function search($sku)
+    {
+        return ProductModel::where('sku', 'like', '%'.$sku.'%')->get();
     }
 }

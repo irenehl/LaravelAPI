@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserModel;
 use Illuminate\Http\Request;
+use Validator;
 
 class UserController extends Controller
 {
@@ -25,7 +26,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return UserModel::create($request->all());
+        $v = Validator::make($request->all(), [
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required|regex:/^.+@.+$/i|unique:App\Models\UserModel,email',
+            'password' => 'required',
+            'phone' => 'regex:/^[0-9]{8}$/'
+        ]);
+
+        if($v->fails()) 
+            return $v->errors();
+        else
+            return UserModel::create($request->all());
     }
 
     /**
@@ -36,7 +48,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return UserModel::find($id);
     }
 
     /**
@@ -48,7 +60,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = UserModel::find($id);
+        $user->update($request->all());
+        return $user;
     }
 
     /**
@@ -59,6 +73,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = UserModel::destroy($id);
+        return $user;
+    }
+
+    /**
+     * Searchs the specified resource from storage.
+     *
+     * @param  string  $name
+     * @return \Illuminate\Http\Response
+     */
+    public function search($name)
+    {
+        return UserModel::where('name', 'like', '%'.$name.'%')->get();
     }
 }
