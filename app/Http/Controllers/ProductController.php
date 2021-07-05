@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -83,6 +84,11 @@ class ProductController extends Controller
      */
     public function search($sku)
     {
-        return ProductModel::where('sku', 'like', '%'.$sku.'%')->get();
+        return ProductModel::where('sku', $sku)->get();
+    }
+
+    public function searchName($name)
+    {
+        return ProductModel::where('name', 'like', '%'.$name.'%')->get();
     }
 }
