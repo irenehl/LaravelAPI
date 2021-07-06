@@ -45,3 +45,6 @@ Route::get('/users/search/{name}', [UserController::class, 'search']);
 // Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
+
+Route::post('forgot-password', [Authentication::class, 'forgot_password']);
+Route::get('reset-password', [Authentication::class, 'reset']);

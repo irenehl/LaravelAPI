@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 use Exception;
@@ -16,12 +16,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserModel::paginate();
+        return User::paginate();
     }
 
     public function paginate(Request $request) {
         try {
-            return UserModel::paginate($request->query('limit'));
+            return User::paginate($request->query('limit'));
         }
         catch(Exception $e) {
             return [
@@ -41,7 +41,7 @@ class UserController extends Controller
         $v = Validator::make($request->all(), [
             'name' => 'required',
             'username' => 'required',
-            'email' => 'required|regex:/^.+@.+$/i|unique:App\Models\UserModel,email',
+            'email' => 'required|regex:/^.+@.+$/i|unique:App\Models\User,email',
             'password' => 'required',
             'phone' => 'regex:/^[0-9]{8}$/'
         ]);
@@ -49,7 +49,7 @@ class UserController extends Controller
         if($v->fails()) 
             return $v->errors();
         else
-            return UserModel::create($request->all());
+            return User::create($request->all());
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return UserModel::find($id);
+        return User::find($id);
     }
 
     /**
@@ -72,7 +72,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = UserModel::find($id);
+        $user = User::find($id);
         $user->update($request->all());
         return $user;
     }
@@ -85,7 +85,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = UserModel::destroy($id);
+        $user = User::destroy($id);
         return $user;
     }
 
@@ -97,6 +97,6 @@ class UserController extends Controller
      */
     public function search($name)
     {
-        return UserModel::where('name', 'like', '%'.$name.'%')->get();
+        return User::where('name', 'like', '%'.$name.'%')->get();
     }
 }
