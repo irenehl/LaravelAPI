@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Authentication;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 
@@ -22,12 +23,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/register', [Authentication::class, 'register']);
-Route::post('/login', [Autehntication::class, 'login']);
+Route::post('/login', [Authentication::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout', [Authentication::class, 'logout']);
+});
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 Route::get('/users/search/{name}', [UserController::class, 'search']);
-Route::post('/users', [UserController::class, 'store']);
+// Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
