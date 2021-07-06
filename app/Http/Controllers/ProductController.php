@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use Validator;
+use Exception;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductModel::all();
+        return ProductModel::paginate();
+    }
+
+    public function paginate(Request $request) {
+        try {
+            return ProductModel::paginate($request->query('limit'));
+        }
+        catch(Exception $e) {
+            return [
+                'message' => 'Something went wrong'
+            ];
+        }
     }
 
     /**

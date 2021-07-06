@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Validator;
+use Exception;
 
 class UserController extends Controller
 {
@@ -15,7 +16,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserModel::all();
+        return UserModel::paginate();
+    }
+
+    public function paginate(Request $request) {
+        try {
+            return UserModel::paginate($request->query('limit'));
+        }
+        catch(Exception $e) {
+            return [
+                'message' => 'Something went wrong'
+            ];
+        }
     }
 
     /**
