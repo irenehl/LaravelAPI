@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/register', [Authentication::class, 'register']);
+Route::post('/login', [Autehntication::class, 'login']);
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show']);
@@ -32,6 +33,7 @@ Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/search/{sku}', [ProductController::class, 'search']);
+Route::get('/products/searchName/{name}', [ProductController::class, 'searchName']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::put('/products/{id}', [ProductController::class, 'update']);
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);

@@ -17,7 +17,7 @@ class Authentication extends Controller
             'password' => 'required|string|confirmed'
         ]);
 
-        $user = User::create([
+        $user = UserModel::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
@@ -25,7 +25,31 @@ class Authentication extends Controller
 
         $token = $user->createToken('token')->plainTextToken;
 
-        $responde = [
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
+
+    public function login(Request $request) {
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        $user = UserModel::where('email', $fields['email']->first());
+
+        if(!$user || !Hash::check($fields['password'], $user->password)) {
+            return response([
+                'message' => 'Incorect cred'
+            ], 401);
+        }
+
+        $token = $user->createToken('token')->plainTextToken;
+
+        $response = [
             'user' => $user,
             'token' => $token
         ];
