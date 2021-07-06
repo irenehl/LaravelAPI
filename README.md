@@ -5,10 +5,13 @@
 [Installation](#Installation)\
 [Dependencies](#Dependencies)\
 [Environment](#Environment)\
-[Entities](#Entities)\
+[Models](#Models)\
 [Endpoints](#Endpoints)
 
 ## Description
+API Restful with Laravel 
+
+## Installation
 + Read [dependenies](#Dependencies) section.
 + Clone repository.
 + Run the following commands:
@@ -21,8 +24,6 @@
     ```
 + Create an *.env* file with the variables specified in [environment section](#Environment)
 + To test in development mode run `sail up -d`
-
-## Installation
 
 ## Dependencies
 There are listed on [package.json](https://github.com/irenehl/LaravelAPI/blob/master/package.json)
@@ -38,7 +39,7 @@ There are listed on [package.json](https://github.com/irenehl/LaravelAPI/blob/ma
 | DB_PASSWORD      |
 | APP_KEY          |
 
-## Entities
+## Models
 The base of the API are ***products and users*** so, these are the models that were used
 
 ### User Model
@@ -76,7 +77,7 @@ class ProductModel extends Model
 ```
 
 ## Endpoints
-Endpoints are documented and handled in [Insomnia](https://support.insomnia.rest/) client, refer to [Insomnia JSON file]() and import it to client.
+Endpoints are documented and handled in [Insomnia](https://support.insomnia.rest/) client, refer to [Insomnia JSON file](https://github.com/irenehl/LaravelAPI/blob/master/Insomnia.json) and import it to client.
 
 -----------------------
 
