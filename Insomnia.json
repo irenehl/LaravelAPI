@@ -1,0 +1,620 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2021-07-06T20:21:56.632Z",
+    "__export_source": "insomnia.desktop.app:v2021.4.0",
+    "resources": [
+        {
+            "_id": "req_48a2e78918844a40954a5a5a2dd0a96f",
+            "parentId": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "modified": 1625534612383,
+            "created": 1625534223718,
+            "url": "{{ _.base_url }}/api/products/searchName/Churrito",
+            "name": "Get: Find By Name",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625534223758,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "parentId": "wrk_9c75b53c2f5346f5b5865f08fda0b265",
+            "modified": 1625516583769,
+            "created": 1625516583769,
+            "name": "Product",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1625516583769,
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_9c75b53c2f5346f5b5865f08fda0b265",
+            "parentId": null,
+            "modified": 1625515660501,
+            "created": 1625515660501,
+            "name": "LaravelAPI",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_02a92d0f46d54892876bde158a9cb4c2",
+            "parentId": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "modified": 1625524595425,
+            "created": 1625524144093,
+            "url": "{{ _.base_url }}/api/products/2",
+            "name": "Put: Update",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"price\": 4.3\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_b3654e7c227047c081eddfa01727e9c5"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625524144093,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_b9e55997873d4e949d544628f24156aa",
+            "parentId": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "modified": 1625523542408,
+            "created": 1625523525367,
+            "url": "{{ _.base_url }}/api/products/1",
+            "name": "Detele: Delete",
+            "description": "",
+            "method": "DELETE",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625523525367,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_5ddc3a01e0bd4e309a7dfe8b66505214",
+            "parentId": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "modified": 1625534431697,
+            "created": 1625517013036,
+            "url": "{{ _.base_url }}/api/products",
+            "name": "Post: Create",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"sku\": \"1267\",\n\t\"name\": \"Churrito\",\n\t\"stock\": 36,\n\t\"price\": 7.5,\n\t\"description\": \"Drink\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_bb7f448caa4548348e3f2b6c1ff4a7e3"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625517013074,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_929d5b39923948e2af41a5076e3ceab6",
+            "parentId": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "modified": 1625542049037,
+            "created": 1625516595608,
+            "url": "{{ _.base_url }}/api/products",
+            "name": "Get: All",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {
+                "type": "bearer",
+                "token": "5|1TRUW0ZRLAuxr91uK68ycwCYyvIKDaTV8BU31mc0"
+            },
+            "metaSortKey": -1625516595608,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_9e70add985f44bd390f8999ec75a9cbd",
+            "parentId": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "modified": 1625541633043,
+            "created": 1625541555548,
+            "url": "{{ _.base_url }}/api/products/paginated?limit=1&page=2",
+            "name": "Get: Paginated",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625516595583,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_a68b070fd1534d5498a183ebfebe5909",
+            "parentId": "fld_7be0fc80471b43d2a6949cac8ff94a92",
+            "modified": 1625524994843,
+            "created": 1625524628324,
+            "url": "{{ _.base_url }}/api/products/search/123445567",
+            "name": "Get: Find By SKU",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625516595558,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_83f77cfa40f04785a7a1e9f5d2811ff9",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625599090785,
+            "created": 1625598214897,
+            "url": "{{ _.base_url }}/api/forgot-password",
+            "name": "Post: Forgot password",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"juan@gmail.com\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_284ced50854a40528e25a543067a2d2e"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625598214897,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_ad060329fa254555a0dc402ebef431c3",
+            "parentId": "wrk_9c75b53c2f5346f5b5865f08fda0b265",
+            "modified": 1625515664178,
+            "created": 1625515664178,
+            "name": "User",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1625515664178,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_1d4075e7218e4b06be919cf36fcf8786",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625602735899,
+            "created": 1625602698533,
+            "url": "http://localhost/api/reset-password?token=9d0cd2b50ea8d8ac2a0f4844cdf0b5f7d201351eff801b22919641acc6a176a7",
+            "name": "Post: Reset Password",
+            "description": "",
+            "method": "GET",
+            "body": {
+                "mimeType": "application/json",
+                "text": ""
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_284ced50854a40528e25a543067a2d2e"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625566219327.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_c5ac6554c28f4d71a2d88a1b5e56c412",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625600581450,
+            "created": 1625515962607,
+            "url": "{{ _.base_url }}/api/register",
+            "name": "Post: Register",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"name\": \"Juan\",\n\t\"username\": \"juan2\",\n\t\"email\": \"juan@gmail.com\",\n\t\"password\": \"admin\",\n\t\"phone\": \"12345678\",\n\t\"dob\": \"1987/7/5\"  \n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_65594a3456b045b4a3f6437c3e5dcc9b"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625515962607,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_6fa4bf11199e4a309a7fae217f2c59fa",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625600673142,
+            "created": 1625536249017,
+            "url": "{{ _.base_url }}/api/login",
+            "name": "Post: Login",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"juan@gmail.com\",\n\t\"password\": \"admin\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_dc8f061244b647aba399ec187d8d17e6"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625515889442.75,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_23d699b25dbf4c58b51828475a44d158",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625536445864,
+            "created": 1625536273425,
+            "url": "{{ _.base_url }}/api/logout",
+            "name": "Post: Logout",
+            "description": "",
+            "method": "POST",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {
+                "type": "bearer",
+                "token": "1|Ed9TwjZAvkmmhCilnSMXGgPV4xJGBqSAEqhaS2U6"
+            },
+            "metaSortKey": -1625515852860.625,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_ef72b2eb80744b15b2e38672627ef813",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625519620400,
+            "created": 1625519514596,
+            "url": "{{ _.base_url }}/api/users/1",
+            "name": "Put: Update",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n    \"name\": \"irene webito\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_65594a3456b045b4a3f6437c3e5dcc9b"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625515816278.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_b9de750229aa4fef8fdbe1762e2f311e",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625600649278,
+            "created": 1625520102010,
+            "url": "{{ _.base_url }}/api/users/1",
+            "name": "Delete: Delete",
+            "description": "",
+            "method": "DELETE",
+            "body": {
+                "mimeType": "application/json",
+                "text": ""
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_65594a3456b045b4a3f6437c3e5dcc9b"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1625515743114.25,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_b625256c911c4213bf3c379da58f8140",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625515882550,
+            "created": 1625515669950,
+            "url": "{{ _.base_url }}/api/users",
+            "name": "Get: All",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625515669950,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_a071013a05494aa99909f590faf5e4b9",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625541834687,
+            "created": 1625541749581,
+            "url": "{{ _.base_url }}/api/users/paginated?limit=2&page=1",
+            "name": "Get: Paginated",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625397016881.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_eab35c425430414697be67d32140f697",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625524877297,
+            "created": 1625520302621,
+            "url": "{{ _.base_url }}/api/users/search/ambre",
+            "name": "Get: Find By Name",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625278363813,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_6f4cd9b3aeec4b0d861624f60bc05233",
+            "parentId": "fld_ad060329fa254555a0dc402ebef431c3",
+            "modified": 1625519386356,
+            "created": 1625519323646,
+            "url": "{{ _.base_url }}/api/users/3",
+            "name": "Get: By Id",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1625041057676,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "env_f4c725946f765997c9caf0d479131a81baeae396",
+            "parentId": "wrk_9c75b53c2f5346f5b5865f08fda0b265",
+            "modified": 1625515682508,
+            "created": 1625515660798,
+            "name": "Base Environment",
+            "data": {
+                "base_url": "http://localhost"
+            },
+            "dataPropertyOrder": {
+                "&": [
+                    "base_url"
+                ]
+            },
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1625515660798,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_f4c725946f765997c9caf0d479131a81baeae396",
+            "parentId": "wrk_9c75b53c2f5346f5b5865f08fda0b265",
+            "modified": 1625602820766,
+            "created": 1625515660807,
+            "name": "Default Jar",
+            "cookies": [
+                {
+                    "key": "XSRF-TOKEN",
+                    "value": "eyJpdiI6Im1HY3VLNHpCY0ZJOWppbmJxSmJmRHc9PSIsInZhbHVlIjoiZ1YxbmRUeStnV1V3NlNQcnNlNlNqSEcrMms1YVJqdkdUaEZjQ3pzV0NyUnpRM2VxbGpkZlJjOHBEVk9lVEFyQXJRT0h2T1NRL3pFOWJqUkVDTEVIbE1sZHJqb3VBTGNKbENHc1k5TnR4WmFMSGRDcTUrSXg2dkkyVE5KN1M4ZHMiLCJtYWMiOiJmNzBjMWYxZWMyMTRhYjQ2YTQzNjY5ZjI4MGYxZjBiYmNjODViZjY2NTVjZWU5MGFkODdiZTY3MmRiMjAwMjEyIn0%3D",
+                    "expires": "2021-07-06T22:20:20.000Z",
+                    "maxAge": 7200,
+                    "domain": "localhost",
+                    "path": "/",
+                    "extensions": [
+                        "samesite=lax"
+                    ],
+                    "hostOnly": true,
+                    "creation": "2021-07-05T20:46:18.412Z",
+                    "lastAccessed": "2021-07-06T20:20:20.766Z",
+                    "id": "41323087488494936"
+                },
+                {
+                    "key": "laravel_session",
+                    "value": "eyJpdiI6InlobWpvUUE4amxDMkp0NkFNeCtmY0E9PSIsInZhbHVlIjoiT083djRicW1YUzE2TURaZWNhL2hnbjB3MXZNb1NKaFVSUnljTjdiYnhJWkhoU3B3VkVMOHY0Tjk2VGR5aHFYTWtnNUxZYThQUHErV0JxRXd5UjRnbjBQQ2JPbEJJaUtManRNOXMwcUw1OG5vV2laa3JQU2JIVlZKZlI2ZTNiWGsiLCJtYWMiOiI3MWJlM2FlNzdjMTUzOTZhYjI3MWVlOTRlYWI4ZjQ2N2MxNWYzOGM2NjlkOGNiNDg2ZWY5ZGMzZGVkODRlZTliIn0%3D",
+                    "expires": "2021-07-06T22:20:20.000Z",
+                    "maxAge": 7200,
+                    "domain": "localhost",
+                    "path": "/",
+                    "httpOnly": true,
+                    "extensions": [
+                        "samesite=lax"
+                    ],
+                    "hostOnly": true,
+                    "creation": "2021-07-05T20:46:18.412Z",
+                    "lastAccessed": "2021-07-06T20:20:20.766Z",
+                    "id": "2664703788055174"
+                },
+                {
+                    "key": "statamic_session",
+                    "value": "eyJpdiI6IlhpZHBjNEpEK0FVR3JJK1hLZkhJUlE9PSIsInZhbHVlIjoibmlVYjhPdW5mRllCbFdydHYxbFRwS2NYNHhRWmhkaGV6MEwxemdma0p0dWs2RFlRc1ozTzU5d2w1MUMzTy96T1BJNHJ2YTRzTmpkdFBvZU5YeVZ5TGE2eDRIdTE2T2k1TlYvN1FUbHVpYkRmbWZuTDlFMmV0TnUyOVkwUGpweDgiLCJtYWMiOiJlOWUwOWVjZDc1YTg2M2I1NTk2MDMzZmUxMzU0NTUxNDQxZTI1YTFiMWQ3NzJmZmI2ZTYxY2E3NTFkOTZkYjQ4In0%3D",
+                    "expires": "2021-07-06T03:20:31.000Z",
+                    "maxAge": 7200,
+                    "domain": "localhost",
+                    "path": "/",
+                    "httpOnly": true,
+                    "extensions": [
+                        "samesite=lax"
+                    ],
+                    "hostOnly": true,
+                    "creation": "2021-07-06T01:20:33.956Z",
+                    "lastAccessed": "2021-07-06T01:20:33.956Z",
+                    "id": "6992219234784571"
+                }
+            ],
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "spc_9a09bc59dfa74bbba00011c3bc74338c",
+            "parentId": "wrk_9c75b53c2f5346f5b5865f08fda0b265",
+            "modified": 1625515660505,
+            "created": 1625515660505,
+            "fileName": "LaravelAPI",
+            "contents": "",
+            "contentType": "yaml",
+            "_type": "api_spec"
+        }
+    ]
+}
