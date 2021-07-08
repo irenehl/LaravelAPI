@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
+use App\Http\Requests\ProductStoreRequest;
 use Validator;
 use Exception;
 
@@ -23,12 +23,14 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ProductStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(ProductStoreRequest $request)
     {
-        return Product::create($request->all());
+        $validated = $request->validated();
+
+        return Product::create($validated);
     }
 
     /**
