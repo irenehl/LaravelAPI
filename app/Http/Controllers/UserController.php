@@ -18,18 +18,7 @@ class UserController extends Controller
     {
         return User::paginate();
     }
-
-    public function paginate(Request $request) {
-        try {
-            return User::paginate($request->query('limit'));
-        }
-        catch(Exception $e) {
-            return [
-                'message' => 'Something went wrong'
-            ];
-        }
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *

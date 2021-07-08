@@ -3,7 +3,10 @@
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\ProductCollection;
+use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,22 +30,26 @@ Route::post('/login', [Authentication::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [Authentication::class, 'logout']);
-    
-    Route::get('/products', [ProductController::class, 'index']);
-    Route::get('/products/paginated', [ProductController::class, 'paginate']);
     Route::get('/products/search/{sku}', [ProductController::class, 'search']);
     Route::get('/products/searchName/{name}', [ProductController::class, 'searchName']);
     
-    Route::post('/products', [ProductController::class, 'store']);
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 });
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/paginate', function () {
+    return new ProductCollection(Product::paginate());
+});
+Route::post('/products', [ProductController::class, 'store']);
+
+
+Route::get('/users/paginate', function () {
+    return new UserCollection(User::paginate());
+});
 
 Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/paginated', [UserController::class, 'paginate']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 Route::get('/users/search/{name}', [UserController::class, 'search']);
-// Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
