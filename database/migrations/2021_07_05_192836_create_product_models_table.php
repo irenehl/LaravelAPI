@@ -19,8 +19,8 @@ class CreateProductModelsTable extends Migration
             $table->string('sku')->unique();
             $table->string('name');
             $table->integer('stock');
+            $table->string('description')->nulabble();
             $table->decimal('price', 9, 2);
-            $table->string('description');
         });
     }
 

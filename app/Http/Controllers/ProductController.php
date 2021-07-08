@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use Validator;
 use Exception;
 
@@ -25,19 +26,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $v = Validator::make($request->all(), [
-            'sku' => 'required',
-            'name' => 'required',
-            'stock' => 'required',
-            'price' => 'required'
-        ]);
-
-        if($v->fails())
-            return $v->errors();
-        else
-            return Product::create($request->all());
+        return Product::create($request->all());
     }
 
     /**
