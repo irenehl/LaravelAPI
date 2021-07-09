@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        $url = \config('values.app_host').'forgot-password?token=' . $token;
+        $url = \config('app.app_url').'forgot-password?token=' . $token;
 
         $this->notify(new ResetPassword($url));
     }
