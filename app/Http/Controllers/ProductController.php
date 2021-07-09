@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductStoreRequest;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
 use Validator;
 use Exception;
 
@@ -17,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::paginate();
+        return new ProductCollection(Product::paginate());
     }
 
     /**
@@ -39,9 +42,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        return Product::find($id);
+        return new ProductResource($product);
     }
 
     /**
@@ -76,13 +79,13 @@ class ProductController extends Controller
      * @param  string  $name
      * @return \Illuminate\Http\Response
      */
-    public function search($sku)
+    public function search(Product $product)
     {
-        return Product::where('sku', $sku)->get();
+        return new ProductResource($product);
     }
 
     public function searchName($name)
     {
-        return Product::where('name', 'like', '%'.$name.'%')->get();
+        return new ProductResource(Product::where('name', 'like', '%'.$name.'%')->get());
     }
 }

@@ -2,60 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
+use App\Http\Resources\AuthenticationResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use Exception;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
 class Authentication extends Controller
 {
-    public function register(Request $request) {
-        $v = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'username' => 'required|unique:App\Models\User,username',
-            'email' => 'required|string|regex:/^.+@.+$/i|unique:App\Models\User,email',
-            'password' => 'required|string',
-            'phone' => 'regex:/^[0-9]{8}$/',
-            'dob' => 'required|date'
-        ]);
-
-        if($v->fails())
-            return $v->errors();
-
-        $user = User::create([
-            'name' => $request['name'],
-            'username' => $request['username'],
-            'phone' => $request['phone'],
-            'dob' => $request['dob'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password'])
-        ]);
+    public function register(UserStoreRequest $request) {
+        $validated = $request->validated();
+        $user = User::create($validated);
 
         $token = $user->createToken('token')->plainTextToken;
 
-        $response = [
+        return new AuthenticationResource([
             'user' => $user,
             'token' => $token
-        ];
-
-        return response($response, 201);
+        ]);
     }
 
-    public function login(Request $request) {
-        $v = Validator::make($request->all(), [
-            'email' => 'required|string',
-            'password' => 'required|string'
-        ]);
+    public function login(LoginRequest $request) {
+        $validated = $request->validate();
 
-        if($v->fails())
-            return $v->errors();
-
-        $user = User::where('email', $request['email'])->first();
+        $user = User::where('email', $validated['email'])->first();
 
         if(!$user || !Hash::check($request['password'], $user->password)) {
             return response([
@@ -65,12 +42,10 @@ class Authentication extends Controller
 
         $token = $user->createToken('token')->plainTextToken;
 
-        $response = [
+        return new AuthenticationResource([
             'user' => $user,
             'token' => $token
-        ];
-
-        return response($response, 201);
+        ]);
     }
 
     public function logout(Request $request) {
@@ -91,16 +66,9 @@ class Authentication extends Controller
         $status = Password::sendResetLink(
             $request->only('email')
         );
-
-        if ($status == Password::RESET_LINK_SENT) {
-            return [
-                'status' => __($status)
-            ];
-        }
-
-        throw ValidationException::withMessages([
-            'email' => [trans($status)],
-        ]);
+        return [
+            'status' => __($status)
+        ];
     }
 
     public function reset(Request $request)

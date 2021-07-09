@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use Validator;
 use Exception;
+use ValidationException;
 
 class UserController extends Controller
 {
@@ -17,13 +20,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::paginate();
+        return new UserCollection(User::paginate());
     }
     
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(UserStoreRequest $request)
@@ -39,9 +42,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function show(User $user)
     {
-        return User::find($id);
+        return new UserResource($user);
     }
 
     /**
@@ -78,6 +82,6 @@ class UserController extends Controller
      */
     public function search($name)
     {
-        return User::where('name', 'like', '%'.$name.'%')->get();
+        return new UserResource(User::where('name', 'like', '%'.$name.'%')->get());;
     }
 }
