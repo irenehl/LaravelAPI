@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserStoreRequest;
 use Validator;
 use Exception;
 
@@ -25,20 +26,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $v = Validator::make($request->all(), [
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required|regex:/^.+@.+$/i|unique:App\Models\User,email',
-            'password' => 'required',
-            'phone' => 'regex:/^[0-9]{8}$/'
-        ]);
+        $validated = $request->validated();
 
-        if($v->fails()) 
-            return $v->errors();
-        else
-            return User::create($request->all());
+        return User::create($validated);
     }
 
     /**
